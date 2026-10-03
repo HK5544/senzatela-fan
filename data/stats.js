@@ -9,12 +9,33 @@ window.SITE_DATA = window.SITE_DATA || {};
 
 window.SITE_DATA.profile = {
   nameJa: "アントニオ・センザテラ",
-  nameAltJa: "センザテーラ／センサテーラと表記されることもあります",
   nameEn: "Antonio Senzatela",
   team: "ミルウォーキー・ブルワーズ",
-  position: "投手（右投げ）／2026年はリリーフ専任",
-  born: "1995年1月21日",
-  birthplace: "ベネズエラ・カラボボ州バレンシア",
+  position: "投手（リリーフ）",
+  // プロフィール表（[項目, 内容, 小さく添える注記] の順。注記がなければ省略）
+  // 事実の出典は経歴ページ（biography.html）の「出典」にまとめています。
+  details: [
+    ["名前", "アントニオ・センザテラ（Antonio Senzatela）", "センザテーラ／センサテーラと表記されることも"],
+    ["本名", "Antonio Senzatela Rondón"],
+    ["所属", "ミルウォーキー・ブルワーズ（2026年8月〜）"],
+    ["ポジション", "投手（リリーフ）"],
+    ["投打", "右投右打"],
+    ["身長", "185cm（6フィート1インチ）"],
+    ["生年月日", "1995年1月21日（31歳）"],
+    ["出身", "ベネズエラ・カラボボ州バレンシア"],
+    ["プロ入り", "2011年7月8日、16歳でロッキーズと契約"],
+    ["メジャーデビュー", "2017年4月6日（対ブルワーズ）"],
+    ["経歴", "コロラド・ロッキーズ（2011〜2026）→ ミルウォーキー・ブルワーズ（2026〜）"],
+    ["主な球種", "4シーム（平均約97マイル）、カッター、シンカー、チェンジアップ、カーブ"],
+    ["主な表彰", "カリフォルニアリーグ最優秀投手（2015）、ナ・リーグ月間最優秀新人（2017年4月）"],
+    ["代表歴", "ベネズエラ代表（2026年WBC優勝）"],
+    ["愛称", "リトル・プリンス", "同郷のフェリックス・ヘルナンデス“キング・フェリックス”にちなむ"]
+  ],
+  // 選手紹介の文章（1要素＝1段落）
+  intro: [
+    "ベネズエラ・バレンシア出身の右腕。15歳のとき三塁手としてロッキーズのスカウトの目に留まり、16歳でプロの道へ。マイナーでは2015年にカリフォルニアリーグ最優秀投手に輝き、2017年に3Aを経ずにメジャーデビューすると、いきなりナ・リーグ月間最優秀新人に選ばれた。長くロッキーズの先発ローテーションを支え、打者有利のクアーズ・フィールドで「打たせて取る」投球を続けてきた。",
+    "膝の前十字靱帯断裂とトミー・ジョン手術という2度の大けがを乗り越え、2025年終盤にリリーフへ転向。オフのフォーム改造で球速は平均約97マイルまで上がり、カッターやシンカーを加えた新しいスタイルで生まれ変わった。2026年3月にはベネズエラ代表としてWBC優勝を経験し、8月にはメジャーデビュー戦の相手だったブルワーズへ移籍。口数は少なくても闘志は強く、「投げるのが大好き」と語るブルペンの職人だ。"
+  ],
   // トップのヒーローの選手写真（Wikimedia Commons の自由ライセンス画像）。クレジット表示は必須なので消さないでください。
   photo: {
     src: "https://upload.wikimedia.org/wikipedia/commons/6/68/Antonio_Senzatela_(47114817704)_(cropped).jpg",
@@ -34,22 +55,7 @@ window.SITE_DATA.profile = {
     license: "CC BY 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg"
-  },
-  facts: [
-    "2017年にコロラド・ロッキーズでメジャーデビュー。2026年途中まで、メジャーではロッキーズ一筋でした。",
-    "先発だった2025年は4勝15敗と苦しんだシーズンでした。",
-    "2026年はリリーフに専念。ロッキーズでは34試合に登板し、9勝2敗3セーブ、防御率3.61でした。",
-    "2026年のワールド・ベースボール・クラシックにベネズエラ代表として出場。ブルワーズのチョウリオ、W.コントレラスとはその代表仲間です。",
-    "2026年8月3日、トレードでブルワーズに移籍。8月4日（現地時間）のパイレーツ戦（7回の1イニング無失点）がブルワーズでの初登板でした。",
-    "9月2日のカブス戦で今季10勝目。先発登板が一度もないまま10勝に到達しました。"
-  ],
-  sources: [
-    { label: "MLB.com プレスリリース（トレード発表）", url: "https://www.mlb.com/press-release/press-release-brewers-acquire-right-handed-reliever-antonio-senzatela-from-rockies" },
-    { label: "MLB.com（ブルワーズ初登板）", url: "https://www.mlb.com/news/dustin-may-joins-brewers-rotation-after-trade-deadline-move" },
-    { label: "Yahoo Sports（ブルワーズ初登板）", url: "https://sports.yahoo.com/articles/senzatela-records-scoreless-inning-brewers-043549810.html" },
-    { label: "ClutchPoints（10勝目）", url: "https://clutchpoints.com/mlb/milwaukee-brewers/brewers-news-antonio-senzatela-joins-interesting-company-with-10th-win-of-2026" },
-    { label: "Wikipedia 日本語版", url: "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%82%BB%E3%83%B3%E3%82%B6%E3%83%86%E3%83%BC%E3%83%A9" }
-  ]
+  }
 };
 
 window.SITE_DATA.season = {

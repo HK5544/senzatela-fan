@@ -127,14 +127,13 @@
     $("profile").innerHTML =
       '<div class="profile-top">' + headshot +
       '<dl class="profile-list">' +
-        "<dt>名前</dt><dd>" + esc(p.nameJa) + "（" + esc(p.nameEn) + "）<br><span class=\"note\">" + esc(p.nameAltJa) + "</span></dd>" +
-        "<dt>所属</dt><dd>" + esc(p.team) + "</dd>" +
-        "<dt>ポジション</dt><dd>" + esc(p.position) + "</dd>" +
-        "<dt>生年月日</dt><dd>" + esc(p.born) + "</dd>" +
-        "<dt>出身</dt><dd>" + esc(p.birthplace) + "</dd>" +
+        (p.details || []).map(function (d) {
+          return "<dt>" + esc(d[0]) + "</dt><dd>" + esc(d[1]) + (d[2] ? '<span class="dd-note">' + esc(d[2]) + "</span>" : "") + "</dd>";
+        }).join("") +
       "</dl></div>" +
-      '<ul class="facts">' + p.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
-      sourceList(p.sources);
+      '<div class="profile-intro">' + (p.intro || []).map(function (t) { return "<p>" + esc(t) + "</p>"; }).join("") + "</div>" +
+      '<p class="profile-more"><a href="biography.html">詳しい経歴はこちら →</a>' +
+        '<span class="note">プロフィールの出典は経歴ページの「出典」にまとめています。</span></p>';
 
     $("season-title").textContent = s.year + "年シーズン成績";
 

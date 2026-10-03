@@ -193,6 +193,21 @@ h2.section {
 }
 .profile-list dd { margin: 0; }
 
+.dd-note { display: block; font-size: .8rem; color: var(--muted); }
+.profile-intro { margin-top: 18px; padding-top: 16px; border-top: 2px solid var(--navy); }
+.profile-intro p { margin: 0 0 12px; line-height: 1.9; }
+.profile-more { margin: 4px 0 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.profile-more a {
+  display: inline-block;
+  padding: 6px 14px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 700;
+  font-size: .9rem;
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+.profile-more a:hover { background: #9e0b33; }
 .facts { margin: 14px 0 0; padding-left: 1.2em; }
 .facts li + li { margin-top: 4px; }
 .facts li::marker { color: var(--red); }
@@ -458,8 +473,8 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   .nav a { padding: 8px 9px 7px; font-size: .88rem; }
   .hero { padding: 22px 18px 20px 22px; }
   .hero h2 { font-size: 1.5rem; }
-  .profile-list { grid-template-columns: 1fr; }
-  .profile-list dt { border-bottom: 0; padding-bottom: 0; }
+  .profile-list { grid-template-columns: 5.6em minmax(0, 1fr); gap: 0 10px; font-size: .92rem; }
+  .profile-list dt { font-size: .74rem; line-height: 1.5; padding-top: 8px; }
   .card { padding: 14px 16px; }
 }
 
