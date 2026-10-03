@@ -54,7 +54,8 @@
     header.innerHTML =
       '<div class="wrap">' +
         '<h1 class="site-title"><a href="index.html">センザテラ極東応援団<span class="num"> ★</span>' +
-        "<small>アントニオ・センザテラ投手 非公式ファンサイト</small></a></h1>" +
+        "<small>アントニオ・センザテラ投手 非公式ファンサイト</small></a>" +
+        '<span class="site-badge">非公式ファンサイト</span></h1>' +
         '<nav aria-label="メインメニュー"><ul class="nav">' +
           NAV.map(function (n) {
             return '<li><a href="' + n.href + '"' + (n.id === page ? ' aria-current="page"' : "") + ">" + n.label + "</a></li>";
@@ -141,35 +142,41 @@
   // ---------- 登板記録 ----------
   function renderGames() {
     var games = (D.games || []).slice().sort(byDateDesc);
-    var cols = ["IP", "H", "R", "ER", "BB", "SO"];
-    var head = ["日付", "所属", "相手", "スコア", "責任", "投球回", "安打", "失点", "自責", "四球", "三振", "メモ・出典"];
+    var cols = ["IP", "H", "R", "ER", "HR", "BB", "SO", "pitches", "ERA"];
+    var head = ["日付", "相手", "結果", "勝敗等", "投球回", "被安打", "失点", "自責点", "被本塁打", "与四球", "奪三振", "球数", "防御率"];
 
+    function shortDate(d) {
+      var p = String(d).split("-");
+      return Number(p[1]) + "/" + Number(p[2]);
+    }
+    function resultCell(r) {
+      var cls = /^○/.test(r) ? "res-w" : /^●/.test(r) ? "res-l" : "";
+      return '<span class="' + cls + '">' + esc(r) + "</span>";
+    }
     function decisionBadge(d) {
       if (!d) return "—";
-      var cls = d === "W" ? "w" : d === "L" ? "l" : d === "SV" ? "sv" : "";
-      var label = { W: "勝", L: "敗", SV: "S", HLD: "H", BS: "BS" }[d] || d;
-      return '<span class="badge ' + cls + '">' + esc(label) + "</span>";
+      var cls = /^勝/.test(d) ? "w" : /^敗/.test(d) ? "l" : /^セーブ\(/.test(d) ? "sv" : /^ホールド/.test(d) ? "hld" : "";
+      return '<span class="badge ' + cls + '">' + esc(d) + "</span>";
     }
 
     $("games-count").textContent = games.length;
     $("games-table").innerHTML = games.length
-      ? "<table><thead><tr>" + head.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr></thead><tbody>" +
+      ? '<table class="stats-table games-table sticky1"><thead><tr>' + head.map(function (h) { return '<th scope="col">' + h + "</th>"; }).join("") + "</tr></thead><tbody>" +
         games.map(function (g) {
-          var where = g.home === true ? "vs " : g.home === false ? "@ " : "";
           return "<tr>" +
-            "<td>" + formatDate(g.date) + "</td>" +
-            '<td><span class="badge team-' + esc(String(g.team).toLowerCase()) + '">' + esc(g.team) + "</span></td>" +
-            "<td>" + esc(where + g.opponent) + "</td>" +
-            "<td>" + (g.score ? esc(g.result || "") + " " + esc(g.score) : "—") + "</td>" +
+            '<th scope="row">' + shortDate(g.date) + "</th>" +
+            "<td>" + (g.home === false ? "@" : "") + esc(g.opponent) + "</td>" +
+            "<td>" + resultCell(g.result) + "</td>" +
             "<td>" + decisionBadge(g.decision) + "</td>" +
             cols.map(function (c) { return "<td>" + val(g[c]) + "</td>"; }).join("") +
-            '<td class="wrap-cell">' + esc(g.memo || "") +
-              (g.source ? '<br><span class="note">出典：' + [].concat(g.source).map(function (x) { return ext(x.url, x.label); }).join("、") + "</span>" : "") +
-            "</td></tr>";
+            "</tr>";
         }).join("") + "</tbody></table>"
       : '<p style="padding:16px">まだ登板記録がありません。</p>';
 
-    $("gamelog-links").innerHTML = sourceList(D.gameLogLinks, "全試合の記録はこちら");
+    var src = D.gameLogSource;
+    $("gamelog-links").innerHTML =
+      (src ? '<p class="note" style="margin-top:0">出典：' + ext(src.url, src.label) + "</p>" : "") +
+      sourceList(D.gameLogLinks, "全試合の記録はこちら");
   }
 
   // ---------- ニュース ----------

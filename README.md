@@ -1,8 +1,8 @@
 # センザテラ極東応援団（非公式ファンサイト）
 
 ミルウォーキー・ブルワーズのアントニオ・センザテラ投手を応援する、日本語の**非公式**ファンサイトです。
-**球団・MLB・選手本人とは一切関係ありません。** 球団ロゴは使わず、色づかいだけブルワーズ風（ネイビー×ゴールド）にしています。
-トップページの選手写真は Wikimedia Commons の自由ライセンス画像（Photo: Ian D'Andrea / CC BY-SA 2.0）で、クレジットを表示しています。
+**球団・MLB・選手本人とは一切関係ありません。** MLB・球団のロゴやワードマークは使わず、デザインだけスポーツメディア風（白基調×ネイビー、アクセントに赤とゴールド、見出しは Google Fonts の Oswald）にしています。ヘッダーとフッターに「非公式ファンサイト」と明記しています。
+選手写真は Wikimedia Commons の自由ライセンス画像（Photo: Ian D'Andrea / CC BY-SA 2.0、Jeff Warrington / CC BY 2.0）で、各写真の下にクレジットを表示しています。
 
 公開URL（GitHub Pages）: https://senzatela-fan-jp.github.io/
 
@@ -13,8 +13,8 @@
 | `index.html` | トップ（プロフィール・今季成績） |
 | `biography.html` | 経歴（年表形式。本文は HTML に直接書いています） |
 | `pitching.html` | 投球スタイル（時代ごとの変化。本文は HTML に直接書いています） |
-| `stats.html` | 年度別成績（メジャー・マイナー。表は HTML に直接書いています） |
-| `games.html` | 試合ごとの登板記録 |
+| `stats.html` | 年度別成績（メジャー・マイナー。表は HTML に直接書いています。出典は Baseball-Reference） |
+| `games.html` | 登板記録（直近10試合） |
 | `news.html` | ニュース・記事一覧 |
 | `videos.html` | おすすめ動画（日本のYouTuberの紹介動画） |
 
@@ -45,19 +45,18 @@ GitHub 上でファイルを開き、鉛筆アイコン（Edit）から直接編
 ### 登板を追加する（`data/games.js`）
 
 `window.SITE_DATA.games = [ ... ]` の中に、次のかたまりをコピーして足します（並び順は自動で日付の新しい順になります）。
+数字は Baseball-Reference のゲームログ（https://www.baseball-reference.com/players/gl.fcgi?id=senzaan01&t=p&year=2026 ）で確認してください。
 
 ```js
 {
-  date: "2026-09-10",
-  team: "MIL",
-  opponent: "シンシナティ・レッズ",
+  date: "2026-09-26",
+  opponent: "STL",
   home: true,
-  score: "5-3",
-  result: "勝",
-  decision: "HLD",
-  IP: "1.0", H: 0, R: 0, ER: 0, BB: 1, SO: 2,
-  memo: "ひとこと",
-  source: { label: "MLB.com", url: "https://..." }
+  result: "○3-2",
+  decision: "ホールド",
+  IP: "0.1", H: 0, R: 0, ER: 0, HR: 0, BB: 0, SO: 1,
+  pitches: 5,
+  ERA: "4.05"
 },
 ```
 

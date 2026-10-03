@@ -36,7 +36,7 @@ window.SITE_DATA.videoChannels = [
     url: "https://www.youtube.com/@MLB_Park_Japan",
     icon: "https://yt3.googleusercontent.com/ayWfbNize4ZII0MMQcJmzlZiiTIGp1zA97J068POcNggij4oYHoV8Pko5y8_zcwc_et9Q08DRtk=s176-c-k-c0x00ffffff-no-rj",
     initial: "M",
-    description: "サカイさんが運営する、MLBの話題を日本語で発信しているチャンネルです。"
+    description: "サカイさんがMLBの話題を日本語で発信するチャンネル。センザテラ投手を愛あるネタで盛り上げる動画も多数。"
   }
 ];
 
@@ -95,6 +95,46 @@ window.SITE_DATA.videos = [
     channel: null,
     channelUrl: null,
     comment: "ロッキーズでの9年あまりを振り返るファンメイドのMV。",
+    verified: "2026-10-03"
+  },
+  {
+    id: "Z2qH52_cd2U",
+    title: "【WBC非公式テーマソング②】センザテーラ",
+    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
+    comment: "WBC非公式テーマソングシリーズのセンザテーラ編。",
+    verified: "2026-10-03"
+  },
+  {
+    id: "9fuAT4H4I6k",
+    title: "【MLB替え歌】センザテーラ",
+    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
+    comment: "センザテーラ投手の替え歌。",
+    verified: "2026-10-03"
+  },
+  {
+    id: "xsKHwNZF1rk",
+    title: "【MLB替え歌】センザテラ",
+    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
+    comment: "センザテラ投手の替え歌。",
+    verified: "2026-10-03"
+  },
+  {
+    id: "7RpMlnNzsfw",
+    title: "【2026.03.13】99mphセンザ キレキレE-Rod最高！",
+    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
+    comment: "WBC期間中（2026年3月13日）の回。",
+    verified: "2026-10-03"
+  },
+  {
+    id: "LUkZXBK7d6M",
+    title: "【2026.08.17】また千賀テーラ締め！ゴーストフォーク！/カッター使いが好きなブルワーズ！だからセンザ！",
+    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
+    comment: "ブルワーズ移籍直後（2026年8月17日）の回。",
     verified: "2026-10-03"
   }
 ];

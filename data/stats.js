@@ -46,35 +46,32 @@ window.SITE_DATA.season = {
   year: 2026,
   // 成績を確認した日（更新したらここも書き換える）
   asOf: "2026-10-03",
-  note: "2026年レギュラーシーズン終了時点の成績です。",
+  note: "2026年レギュラーシーズン終了時点の成績です（Baseball-Reference）。",
   // 今季通算（ロッキーズ＋ブルワーズ）
   total: {
     label: "2026年 通算（COL＋MIL）",
     G: 57, GS: 0, W: 11, L: 5, SV: 4,
     IP: "73.1", SO: 60, BB: 26, HR: 6,
-    ERA: "4.05", WHIP: "1.35"
+    ERA: "4.05", WHIP: "1.350"
   },
   // チーム別
   splits: [
     {
       label: "ロッキーズ（トレード前）",
       G: 34, GS: 0, W: 9, L: 2, SV: 3,
-      IP: "52.1", SO: 46, BB: 17, HR: null,
-      ERA: "3.61", WHIP: "1.30",
-      note: "MLB.com のトレード発表時点の数字"
+      IP: "52.1", SO: 46, BB: 17, HR: 4,
+      ERA: "3.61", WHIP: "1.299"
     },
     {
       label: "ブルワーズ（移籍後）",
       G: 23, GS: 0, W: 2, L: 3, SV: 1,
-      IP: "21.0", SO: 14, BB: 9, HR: null,
-      ERA: null, WHIP: null,
-      note: "通算からロッキーズ分を差し引いて計算した値（登板数・投球回は出典に記載あり）"
+      IP: "21.0", SO: 14, BB: 9, HR: 2,
+      ERA: "5.14", WHIP: "1.476"
     }
   ],
   sources: [
-    { label: "ESPN 選手ページ（2026年通算）", url: "https://www.espn.com/mlb/player/_/id/33750/antonio-senzatela" },
-    { label: "MLB.com プレスリリース（ロッキーズでの成績）", url: "https://www.mlb.com/press-release/press-release-brewers-acquire-right-handed-reliever-antonio-senzatela-from-rockies" },
-    { label: "MLB.com 選手ページ（最新の公式成績はこちら）", url: "https://www.mlb.com/player/antonio-senzatela-622608" },
-    { label: "Baseball Savant（Statcast）", url: "https://baseballsavant.mlb.com/savant-player/antonio-senzatela-622608" }
+    { label: "Baseball-Reference 選手ページ", url: "https://www.baseball-reference.com/players/s/senzaan01.shtml" },
+    { label: "Baseball-Reference 2026年ゲームログ", url: "https://www.baseball-reference.com/players/gl.fcgi?id=senzaan01&t=p&year=2026" },
+    { label: "MLB.com 選手ページ（最新の公式成績はこちら）", url: "https://www.mlb.com/player/antonio-senzatela-622608" }
   ]
 };
