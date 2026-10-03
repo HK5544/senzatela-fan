@@ -1,42 +1,31 @@
 /*
- * スポーツメディア風のデザイン（白基調 × ネイビー、アクセントに赤とゴールド）。
+ * スポーツメディア風のデザイン（白基調 × ネイビー、アクセントは赤、ゴールドは差し色）。
+ * どの端末でも常に白基調で表示します（ダークモードには切り替えません）。
  * MLB・球団のロゴやワードマークは使いません。
  * 見出しの英数字は Oswald（Google Fonts）、日本語はOS標準の太字ゴシックで表示します。
  */
 :root {
+  color-scheme: light;
   --navy: #041e42;
   --navy-2: #0b2d5b;
   --navy-3: #13407e;
   --red: #bf0d3e;
   --gold: #ffc52f;
-  --gold-soft: #fff6dc;
-  --bg: #f2f4f7;
+  --gold-soft: #fff8e1;
+  --red-soft: #fdf0f3;
+  --bg: #f7f8fa;
   --surface: #ffffff;
-  --surface-2: #f7f8fa;
-  --text: #0f1b2d;
-  --muted: #5a6577;
+  --surface-2: #f4f6f9;
+  --text: #1d2329;
+  --muted: #5c6670;
   --line: #dde2e9;
   --line-strong: #c3cad5;
   --link: #0b4fa8;
-  --shadow: 0 1px 2px rgba(4, 30, 66, .06), 0 2px 8px rgba(4, 30, 66, .06);
-  --radius: 6px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 6px rgba(16, 24, 40, .05);
+  --shadow-hover: 0 6px 18px rgba(16, 24, 40, .12);
+  --radius: 4px;
   --font-body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, system-ui, sans-serif;
   --font-head: "Oswald", "Barlow Condensed", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #07111f;
-    --surface: #0f1d33;
-    --surface-2: #13243f;
-    --text: #e8edf5;
-    --muted: #9eabc0;
-    --line: #22355a;
-    --line-strong: #2f4670;
-    --link: #8cc2ff;
-    --gold-soft: #2b2714;
-    --shadow: none;
-  }
 }
 
 * { box-sizing: border-box; }
@@ -59,7 +48,6 @@ a:hover { text-decoration-thickness: 2px; }
 .site-header {
   background: var(--navy);
   color: #fff;
-  box-shadow: inset 0 -3px 0 var(--red);
 }
 .site-header .wrap {
   display: flex;
@@ -129,10 +117,11 @@ a:hover { text-decoration-thickness: 2px; }
   border-bottom: 3px solid transparent;
 }
 .nav a:hover { color: #fff; background: var(--navy-2); }
-.nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--gold); }
+.nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--red); }
 
 /* ---------- 本文 ---------- */
 main.wrap { padding-top: 28px; padding-bottom: 56px; }
+body[data-page="home"] main.wrap { padding-top: 4px; }
 
 .hero {
   background:
@@ -173,26 +162,15 @@ main.wrap { padding-top: 28px; padding-bottom: 56px; }
 
 h2.section {
   font-family: var(--font-head);
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.35;
   letter-spacing: .02em;
+  color: var(--navy);
   margin: 40px 0 14px;
-  padding-bottom: 6px;
-  border-bottom: 2px solid var(--navy);
-  position: relative;
+  padding-left: 12px;
+  border-left: 4px solid var(--red);
 }
-h2.section::after {
-  content: "";
-  position: absolute;
-  left: 0; bottom: -2px;
-  width: 56px; height: 2px;
-  background: var(--red);
-}
-@media (prefers-color-scheme: dark) {
-  h2.section { border-bottom-color: var(--line-strong); }
-}
-
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -203,16 +181,8 @@ h2.section::after {
 .card + .card { margin-top: 12px; }
 
 /* プロフィール */
-.profile-top { display: flex; gap: 22px; align-items: flex-start; }
-.profile-top .profile-list { flex: 1; min-width: 0; }
-.profile-photo { margin: 0; flex: 0 0 220px; max-width: 220px; }
-.profile-photo img {
-  display: block; width: 100%; height: auto;
-  aspect-ratio: 4 / 5; object-fit: cover; object-position: center top;
-  border-radius: 4px; background: var(--line);
-}
-.profile-photo figcaption, .bio-photo figcaption { margin-top: 6px; font-size: .8rem; color: var(--muted); line-height: 1.5; }
-.profile-photo .credit, .bio-photo .credit { display: block; font-size: .72rem; margin-top: 2px; overflow-wrap: anywhere; }
+.bio-photo figcaption { margin-top: 6px; font-size: .8rem; color: var(--muted); line-height: 1.5; }
+.bio-photo .credit { display: block; font-size: .72rem; margin-top: 2px; overflow-wrap: anywhere; }
 
 .profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 0 16px; margin: 0; }
 .profile-list dt, .profile-list dd { padding: 6px 0; border-bottom: 1px solid var(--line); }
@@ -236,40 +206,6 @@ h2.section::after {
   .tl-item { display: flow-root; }
 }
 .bio-photo img { display: block; width: 100%; height: auto; border-radius: 4px; background: var(--line); }
-
-/* 成績のタイル */
-.tiles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 10px;
-  margin-bottom: 14px;
-}
-.tile {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 10px 14px 12px;
-  box-shadow: var(--shadow);
-  position: relative;
-}
-.tile::before {
-  content: "";
-  position: absolute; left: 0; top: 0; right: 0; height: 3px;
-  background: var(--navy);
-  border-radius: var(--radius) var(--radius) 0 0;
-}
-.tile:first-child::before { background: var(--red); }
-@media (prefers-color-scheme: dark) {
-  .tile::before { background: var(--gold); }
-}
-.tile .k { font-family: var(--font-head); font-weight: 600; font-size: .78rem; color: var(--muted); letter-spacing: .04em; }
-.tile .v {
-  font-family: var(--font-head);
-  font-size: 1.9rem;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  line-height: 1.2;
-}
 
 /* ---------- 表（スタッツ表） ---------- */
 .table-scroll {
@@ -301,16 +237,12 @@ thead th {
 }
 tbody th { font-weight: 700; background: var(--surface); }
 tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: var(--surface-2); }
-tbody tr:hover td, tbody tr:hover th { background: var(--gold-soft); }
+tbody tr:hover td, tbody tr:hover th { background: #eef2f8; }
 tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
 tbody tr.total td, tbody tr.total th { font-weight: 700; background: var(--gold-soft); border-top: 2px solid var(--navy); }
 tbody tr.subtotal td, tbody tr.subtotal th { font-weight: 700; }
 tbody tr.split th { font-weight: 400; color: var(--muted); }
 .col2-left td:nth-child(2), .col2-left th:nth-child(2) { text-align: left; }
-@media (prefers-color-scheme: dark) {
-  tbody tr.total td, tbody tr.total th { border-top-color: var(--gold); }
-}
-
 /* 年度別成績・登板記録の表：左の列を固定 */
 .stats-table tr > :nth-child(2) { text-align: left; }
 .games-table tr > :nth-child(3),
@@ -332,7 +264,7 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 .sticky2 tbody tr:nth-child(even) > :nth-child(2) { background: var(--surface-2); }
 .sticky1 tbody tr:hover > :first-child,
 .sticky2 tbody tr:hover > :first-child,
-.sticky2 tbody tr:hover > :nth-child(2),
+.sticky2 tbody tr:hover > :nth-child(2) { background: #eef2f8; }
 .sticky2 tbody tr.total > :first-child,
 .sticky2 tbody tr.total > :nth-child(2) { background: var(--gold-soft); }
 .sticky1 thead tr > :first-child,
@@ -355,15 +287,8 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 }
 .team-col { background: #33006f; color: #fff; }
 .team-mil { background: var(--navy); color: var(--gold); }
-@media (prefers-color-scheme: dark) {
-  .team-mil { box-shadow: inset 0 0 0 1px var(--gold); }
-}
 .res-w { color: var(--text); font-weight: 700; }
 .res-l { color: var(--red); font-weight: 700; }
-@media (prefers-color-scheme: dark) {
-  .res-l { color: #ff7a9a; }
-}
-
 .badge {
   display: inline-block;
   padding: 0 8px;
@@ -378,10 +303,6 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 .badge.l { background: var(--red); color: #fff; }
 .badge.sv { background: var(--navy); color: #fff; }
 .badge.hld { background: var(--navy-3); color: #fff; }
-@media (prefers-color-scheme: dark) {
-  .badge.sv { box-shadow: inset 0 0 0 1px var(--line-strong); }
-}
-
 .note, .source { font-size: .85rem; color: var(--muted); }
 .source ul { margin: 4px 0 0; padding-left: 1.2em; }
 
@@ -392,16 +313,15 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 14px;
 }
+.news-item, .video-card { transition: transform .15s ease, box-shadow .15s ease; }
+.news-item:hover, .video-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
 .news-item {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--navy);
+  border-top: 3px solid var(--red);
   border-radius: var(--radius);
   padding: 14px 18px 16px;
   box-shadow: var(--shadow);
-}
-@media (prefers-color-scheme: dark) {
-  .news-item { border-top-color: var(--gold); }
 }
 .news-meta { font-size: .78rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
 .news-meta time { font-family: var(--font-head); font-weight: 600; letter-spacing: .03em; }
@@ -482,6 +402,7 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   color: #b9c6dc;
   font-size: .82rem;
   border-top: 3px solid var(--red);
+  margin-top: 8px;
 }
 .site-footer .wrap { padding-top: 22px; padding-bottom: 30px; }
 .site-footer a { color: var(--gold); }
@@ -494,13 +415,9 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   .nav a { padding: 8px 9px 7px; font-size: .88rem; }
   .hero { padding: 22px 18px 20px 22px; }
   .hero h2 { font-size: 1.5rem; }
-  .profile-top { flex-direction: column; align-items: center; }
-  .profile-top .profile-list { align-self: stretch; }
-  .profile-photo { flex-basis: auto; width: 100%; max-width: 240px; }
   .profile-list { grid-template-columns: 1fr; }
   .profile-list dt { border-bottom: 0; padding-bottom: 0; }
   .card { padding: 14px 16px; }
-  .tile .v { font-size: 1.6rem; }
   .bio-photo { max-width: 240px; }
 }
 
@@ -519,9 +436,6 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   font-weight: 700;
   letter-spacing: .1em;
   color: var(--red);
-}
-@media (prefers-color-scheme: dark) {
-  .era-years { color: var(--gold); }
 }
 .era h2.section { margin-top: 8px; }
 
@@ -548,16 +462,13 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   margin-right: 8px;
   padding: 0 8px;
   border-radius: 3px;
-  background: var(--navy);
+  background: var(--red);
   color: #fff;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: .82rem;
   letter-spacing: .03em;
   vertical-align: 2px;
-}
-@media (prefers-color-scheme: dark) {
-  .tl-date { background: var(--gold); color: var(--navy); }
 }
 .tl-item p { margin: 0 0 10px; }
 .tl-item p:last-child { margin-bottom: 0; }
@@ -574,11 +485,6 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 .hbar-fill { display: block; height: 100%; background: var(--navy); border-radius: 0 4px 4px 0; }
 .hbar-row:hover .hbar-fill { background: var(--navy-3); }
 .hbar-value { font-family: var(--font-head); font-size: .95rem; font-weight: 700; text-align: right; }
-@media (prefers-color-scheme: dark) {
-  .hbar-fill { background: var(--gold); }
-  .hbar-row:hover .hbar-fill { background: #ffd666; }
-}
-
 /* ---------- 出典の番号と一覧 ---------- */
 sup.ref { font-size: .68em; line-height: 0; margin: 0 1px; white-space: nowrap; }
 sup.ref a { text-decoration: none; color: var(--muted); }
@@ -591,7 +497,154 @@ sup.ref a:hover { color: var(--link); text-decoration: underline; }
 }
 .ref-list li { display: flex; gap: 8px; padding: 4px 0; scroll-margin-top: 12px; }
 .ref-list li + li { border-top: 1px dashed var(--line); }
-.ref-list li:target { background: var(--gold-soft); }
+.ref-list li:target { background: var(--red-soft); }
 .ref-num { flex: 0 0 3em; color: var(--muted); font-variant-numeric: tabular-nums; }
 .ref-body { min-width: 0; }
 .ref-url { display: block; color: var(--muted); font-size: .72rem; overflow-wrap: anywhere; }
+
+/* ---------- トップのヒーロー（選手名・写真・スタッツバー） ---------- */
+.player-hero {
+  background: var(--navy);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.player-hero::before {
+  /* 背景の斜めのアクセント */
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; right: -10%;
+  width: 55%;
+  background: linear-gradient(100deg, transparent 0 18%, rgba(255, 255, 255, .05) 18% 100%);
+  pointer-events: none;
+}
+.player-hero-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 300px);
+  align-items: end;
+  gap: 24px;
+  padding-top: 36px;
+}
+.player-id { padding-bottom: 36px; min-width: 0; }
+.player-team {
+  margin: 0 0 6px;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #c6d2e6;
+}
+.player-team::before {
+  content: "";
+  display: inline-block;
+  width: 10px; height: 10px;
+  margin-right: 8px;
+  background: var(--gold);
+  vertical-align: 0;
+}
+.player-name { margin: 0; line-height: 1; }
+.player-name .en {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: .98;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.player-name .ja {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.player-meta {
+  margin: 14px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, .2);
+  color: #c6d2e6;
+  font-size: .92rem;
+  max-width: 32em;
+}
+.player-photo { margin: 0; align-self: end; min-width: 0; }
+.player-photo img {
+  display: block;
+  width: 100%; height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover; object-position: center top;
+  background: var(--navy-2);
+  border-radius: 4px 4px 0 0;
+}
+.player-photo figcaption {
+  padding: 6px 0 10px;
+  font-size: .72rem;
+  line-height: 1.5;
+  color: #b9c6dc;
+}
+.player-photo .credit { display: block; overflow-wrap: anywhere; }
+.player-photo a { color: #fff; }
+
+.statbar { background: var(--surface); border-bottom: 1px solid var(--line); box-shadow: var(--shadow); position: relative; }
+.statbar .wrap { display: flex; align-items: stretch; gap: 20px; }
+.statbar-title {
+  margin: 0;
+  padding: 16px 20px 16px 0;
+  border-right: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: .95rem;
+  letter-spacing: .04em;
+  color: var(--navy);
+  display: flex; align-items: center;
+  white-space: nowrap;
+}
+.statbar-list {
+  flex: 1;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.stat { padding: 12px 8px; text-align: center; }
+.stat + .stat { border-left: 1px solid var(--line); }
+.stat dt {
+  font-size: .75rem;
+  font-weight: 700;
+  color: var(--muted);
+  line-height: 1.3;
+}
+.stat dt span {
+  display: block;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--red);
+}
+.stat dd {
+  margin: 2px 0 0;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 720px) {
+  .player-hero-inner { grid-template-columns: minmax(0, 1fr) 150px; gap: 14px; padding-top: 24px; }
+  .player-id { padding-bottom: 20px; align-self: center; }
+  .player-meta { font-size: .82rem; }
+  .player-photo figcaption { font-size: .62rem; padding-bottom: 8px; }
+  .statbar .wrap { display: block; padding: 0; }
+  .statbar-title { border-right: 0; border-bottom: 1px solid var(--line); padding: 8px 16px; font-size: .85rem; }
+  .stat { padding: 10px 2px; }
+  .stat dd { font-size: 1.45rem; }
+  .stat dt { font-size: .68rem; }
+}
+@media (max-width: 400px) {
+  .player-hero-inner { grid-template-columns: minmax(0, 1fr) 112px; }
+  .player-name .en { font-size: clamp(1.6rem, 8.5vw, 2.3rem); }
+  .player-team { font-size: .75rem; }
+  .player-name .ja { font-size: 1rem; letter-spacing: .02em; }
+}

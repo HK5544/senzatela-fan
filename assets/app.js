@@ -74,7 +74,7 @@
         '<p class="disclaimer">' + DISCLAIMER + "</p>" +
       "</div>";
 
-    document.body.insertBefore(header, document.querySelector("main"));
+    document.body.insertBefore(header, document.body.firstChild);
     document.body.appendChild(footer);
   }
 
@@ -83,42 +83,48 @@
     var p = D.profile, s = D.season;
     if (!p || !s) return;
 
-    $("hero").innerHTML =
-      '<h2>' + esc(p.nameJa) + "</h2>" +
-      '<div class="en">' + esc(p.nameEn) + "</div>" +
-      "<p>" + esc(p.team) + "／" + esc(p.position) + "</p>";
-
+    var t = s.total;
     var ph = p.photo;
     var photo = ph ?
-      '<figure class="profile-photo">' +
-        '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt) + '" width="320" height="400" loading="lazy" decoding="async">' +
+      '<figure class="player-photo">' +
+        '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt) + '" width="400" height="500" decoding="async">' +
         "<figcaption>" + esc(ph.caption) +
           '<span class="credit">Photo: ' + ext(ph.sourceUrl, ph.author) + " / " + ext(ph.licenseUrl, ph.license) +
           "（" + ext(ph.sourceUrl, "Wikimedia Commons") + "）</span>" +
         "</figcaption></figure>"
       : "";
+    var bar = [
+      ["防御率", "ERA", t.ERA], ["登板", "G", t.G], ["勝敗", "W-L", t.W + "-" + t.L],
+      ["セーブ", "SV", t.SV], ["奪三振", "SO", t.SO]
+    ];
+
+    $("hero").innerHTML =
+      '<div class="wrap player-hero-inner">' +
+        '<div class="player-id">' +
+          '<p class="player-team">' + esc(p.team) + "</p>" +
+          '<h2 class="player-name"><span class="en">' + esc(p.nameEn) + '</span><span class="ja">' + esc(p.nameJa) + "</span></h2>" +
+          '<p class="player-meta">' + esc(p.position) + "</p>" +
+        "</div>" + photo +
+      "</div>" +
+      '<div class="statbar"><div class="wrap">' +
+        '<p class="statbar-title">' + esc(s.year) + " シーズン成績</p>" +
+        '<dl class="statbar-list">' + bar.map(function (x) {
+          return '<div class="stat"><dt>' + esc(x[0]) + '<span>' + esc(x[1]) + "</span></dt><dd>" + val(x[2]) + "</dd></div>";
+        }).join("") + "</dl>" +
+      "</div></div>";
 
     $("profile").innerHTML =
-      '<div class="profile-top">' + photo +
       '<dl class="profile-list">' +
         "<dt>名前</dt><dd>" + esc(p.nameJa) + "（" + esc(p.nameEn) + "）<br><span class=\"note\">" + esc(p.nameAltJa) + "</span></dd>" +
         "<dt>所属</dt><dd>" + esc(p.team) + "</dd>" +
         "<dt>ポジション</dt><dd>" + esc(p.position) + "</dd>" +
         "<dt>生年月日</dt><dd>" + esc(p.born) + "</dd>" +
         "<dt>出身</dt><dd>" + esc(p.birthplace) + "</dd>" +
-      "</dl></div>" +
+      "</dl>" +
       '<ul class="facts">' + p.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
       sourceList(p.sources);
 
-    var t = s.total;
-    var tiles = [
-      ["登板", t.G], ["勝-敗", t.W + "-" + t.L], ["セーブ", t.SV],
-      ["防御率", t.ERA], ["投球回", t.IP], ["奪三振", t.SO], ["WHIP", t.WHIP]
-    ];
     $("season-title").textContent = s.year + "年シーズン成績";
-    $("tiles").innerHTML = tiles.map(function (x) {
-      return '<div class="tile"><div class="k">' + esc(x[0]) + '</div><div class="v">' + val(x[1]) + "</div></div>";
-    }).join("");
 
     var cols = ["G", "GS", "W", "L", "SV", "IP", "SO", "BB", "HR", "ERA", "WHIP"];
     var head = ["", "登板", "先発", "勝", "敗", "S", "投球回", "奪三振", "四球", "被本", "防御率", "WHIP"];
@@ -127,7 +133,7 @@
         cols.map(function (c) { return "<td>" + val(r[c]) + "</td>"; }).join("") + "</tr>";
     }
     $("season-table").innerHTML =
-      "<table><thead><tr>" + head.map(function (h) { return "<th>" + h + "</th>"; }).join("") + "</tr></thead><tbody>" +
+      '<table class="stats-table"><thead><tr>' + head.map(function (h) { return '<th scope="col">' + h + "</th>"; }).join("") + "</tr></thead><tbody>" +
       s.splits.map(function (r) { return row(r); }).join("") + row(t, "total") +
       "</tbody></table>";
 
