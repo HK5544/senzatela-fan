@@ -160,7 +160,7 @@
             "<td>" + decisionBadge(g.decision) + "</td>" +
             cols.map(function (c) { return "<td>" + val(g[c]) + "</td>"; }).join("") +
             '<td class="wrap-cell">' + esc(g.memo || "") +
-              (g.source ? '<br><span class="note">出典：' + ext(g.source.url, g.source.label) + "</span>" : "") +
+              (g.source ? '<br><span class="note">出典：' + [].concat(g.source).map(function (x) { return ext(x.url, x.label); }).join("、") + "</span>" : "") +
             "</td></tr>";
         }).join("") + "</tbody></table>"
       : '<p style="padding:16px">まだ登板記録がありません。</p>';

@@ -20,11 +20,12 @@ window.SITE_DATA.profile = {
     "先発だった2025年は4勝15敗と苦しんだシーズンでした。",
     "2026年はリリーフに専念。ロッキーズでは34試合に登板し、9勝2敗3セーブ、防御率3.61でした。",
     "2026年のワールド・ベースボール・クラシックにベネズエラ代表として出場。ブルワーズのチョウリオ、W.コントレラスとはその代表仲間です。",
-    "2026年8月3日、トレードでブルワーズに移籍。8月5日のパイレーツ戦（7回の1イニング無失点）がブルワーズでの初登板でした。",
+    "2026年8月3日、トレードでブルワーズに移籍。8月4日（現地時間）のパイレーツ戦（7回の1イニング無失点）がブルワーズでの初登板でした。",
     "9月2日のカブス戦で今季10勝目。先発登板が一度もないまま10勝に到達しました。"
   ],
   sources: [
     { label: "MLB.com プレスリリース（トレード発表）", url: "https://www.mlb.com/press-release/press-release-brewers-acquire-right-handed-reliever-antonio-senzatela-from-rockies" },
+    { label: "MLB.com（ブルワーズ初登板）", url: "https://www.mlb.com/news/dustin-may-joins-brewers-rotation-after-trade-deadline-move" },
     { label: "Yahoo Sports（ブルワーズ初登板）", url: "https://sports.yahoo.com/articles/senzatela-records-scoreless-inning-brewers-043549810.html" },
     { label: "ClutchPoints（10勝目）", url: "https://clutchpoints.com/mlb/milwaukee-brewers/brewers-news-antonio-senzatela-joins-interesting-company-with-10th-win-of-2026" },
     { label: "Wikipedia 日本語版", url: "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%83%B3%E3%83%88%E3%83%8B%E3%82%AA%E3%83%BB%E3%82%BB%E3%83%B3%E3%82%B6%E3%83%86%E3%83%BC%E3%83%A9" }

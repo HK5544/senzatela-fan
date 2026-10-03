@@ -12,7 +12,7 @@
  *   decision : "W"（勝利投手）/ "L"（敗戦投手）/ "SV" / "HLD" / "BS" / null
  *   IP, H, R, ER, BB, SO : 投球回と各成績（分からない項目は null →「—」表示）
  *   memo     : ひとこと
- *   source   : 出典 { label, url }（必ず書く）
+ *   source   : 出典 { label, url }（必ず書く）。複数あるときは [ {…}, {…} ] の配列でも可
  */
 window.SITE_DATA = window.SITE_DATA || {};
 
@@ -30,7 +30,7 @@ window.SITE_DATA.games = [
     source: { label: "ClutchPoints", url: "https://clutchpoints.com/mlb/milwaukee-brewers/brewers-news-antonio-senzatela-joins-interesting-company-with-10th-win-of-2026" }
   },
   {
-    date: "2026-08-05",
+    date: "2026-08-04",
     team: "MIL",
     opponent: "ピッツバーグ・パイレーツ",
     home: null,
@@ -39,7 +39,10 @@ window.SITE_DATA.games = [
     decision: null,
     IP: "1.0", H: null, R: 0, ER: 0, BB: null, SO: null,
     memo: "ブルワーズ初登板。7回を無失点。球場到着は試合開始の約30分前だった。",
-    source: { label: "Yahoo Sports", url: "https://sports.yahoo.com/articles/senzatela-records-scoreless-inning-brewers-043549810.html" }
+    source: [
+      { label: "MLB.com", url: "https://www.mlb.com/news/dustin-may-joins-brewers-rotation-after-trade-deadline-move" },
+      { label: "Yahoo Sports", url: "https://sports.yahoo.com/articles/senzatela-records-scoreless-inning-brewers-043549810.html" }
+    ]
   }
 ];
 
