@@ -607,7 +607,7 @@ sup.ref a:hover { color: var(--link); text-decoration: underline; }
   display: inline-block;
   width: 10px; height: 10px;
   margin-right: 8px;
-  background: var(--red);
+  background: #ffc52f;   /* ブルワーズのチームカラー（球団ラベルと同じく配色ルールの例外） */
   vertical-align: 0;
 }
 .player-name { margin: 0; line-height: 1; }
