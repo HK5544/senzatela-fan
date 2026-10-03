@@ -84,6 +84,12 @@ python3 -m http.server 8000
 リポジトリの **Settings → Pages** で、Source を「Deploy from a branch」、Branch を `main` / `/ (root)` にして保存します。
 `.nojekyll` を置いているので、ファイルはそのまま配信されます。
 
+## 検索エンジン向けファイル
+
+- `sitemap.xml`：全ページの URL と最終更新日（`lastmod`）。ページを追加・大きく更新したら、ここも書き換えてください。
+- `robots.txt`：全ページ巡回可。sitemap.xml の場所を書いています。
+- 各ページの `<head>` に、自分自身を指す `<link rel="canonical">` と Google Search Console の確認用タグがあります（確認用タグは消さないでください）。
+
 ## 注意
 
 - 成績・記事・動画の権利はそれぞれの出典元に帰属します。
