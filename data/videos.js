@@ -8,8 +8,18 @@
  *   channelUrl : チャンネルURL（分からなければ null）
  *   comment  : このサイトでのひとこと紹介
  *   verified : 実在を確認した日
- * 再生ボタンを押したときだけ YouTube 公式の埋め込みプレーヤー
- * （youtube-nocookie.com）を読み込みます。サムネイル画像は表示しません。
+ * サムネイルは https://i.ytimg.com/vi/【動画ID】/hqdefault.jpg を自動で表示し、
+ * クリックすると YouTube の動画ページを開きます。
+ * 「ここで再生」を押したときだけ YouTube 公式の埋め込みプレーヤー
+ * （youtube-nocookie.com）を読み込みます。
+ *
+ * チャンネル（videoChannels）
+ *   name        : チャンネル名
+ *   url         : チャンネルURL
+ *   icon        : チャンネルの公式アイコン画像URL（分からなければ null。
+ *                 null や読み込み失敗のときは initial の丸アイコンになります）
+ *   initial     : 丸アイコンに表示する頭文字
+ *   description : ひとこと紹介
  */
 window.SITE_DATA = window.SITE_DATA || {};
 
@@ -17,7 +27,16 @@ window.SITE_DATA.videoChannels = [
   {
     name: "Senzatela（@A.Senzatela）",
     url: "https://www.youtube.com/@A.Senzatela",
+    icon: null,
+    initial: "S",
     description: "日本のロッキーズファンが運営するチャンネル（本人や球団とは無関係と明記されています）。登板ごとに内容を紹介する《THE FEATURE PLAYER》シリーズを投稿しています。"
+  },
+  {
+    name: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
+    url: "https://www.youtube.com/@MLB_Park_Japan",
+    icon: null,
+    initial: "M",
+    description: "サカイさんが運営する、MLBの話題を日本語で発信しているチャンネルです。"
   }
 ];
 

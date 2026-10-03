@@ -1,5 +1,5 @@
 /*
- * 共通レイアウト（ヘッダー・注意書き・フッター）と各ページの表示処理。
+ * 共通レイアウト（ヘッダー・フッター）と各ページの表示処理。
  * データは data/*.js に入っているので、ふだんの更新でこのファイルを触る必要はありません。
  */
 (function () {
@@ -16,9 +16,7 @@
     { id: "videos", href: "videos.html", label: "おすすめ動画" }
   ];
 
-  var DISCLAIMER =
-    "このサイトは個人が運営する<strong>非公式ファンサイト</strong>です。" +
-    "ミルウォーキー・ブルワーズ、MLB（メジャーリーグベースボール）、選手本人とは一切関係ありません。";
+  var DISCLAIMER = "非公式ファンサイト（球団・MLB・選手本人とは無関係）";
 
   // ---------- 小さなヘルパー ----------
   function esc(s) {
@@ -62,25 +60,18 @@
         "</ul></nav>" +
       "</div>";
 
-    var notice = document.createElement("div");
-    notice.className = "unofficial";
-    notice.setAttribute("role", "note");
-    notice.innerHTML = '<div class="wrap">⚠ ' + DISCLAIMER + "</div>";
-
     var footer = document.createElement("footer");
     footer.className = "site-footer";
     footer.innerHTML =
       '<div class="wrap">' +
-        "<p>" + DISCLAIMER + "</p>" +
-        "<p>球団名・選手名は説明のために使用しています。選手写真や球団ロゴは掲載していません。" +
-        "成績・記事・動画の権利はそれぞれの出典元に帰属します。</p>" +
+        "<p>球団名・選手名は説明のために使用しています。球団ロゴは掲載していません。" +
+        "成績・記事・動画・写真の権利はそれぞれの出典元・撮影者に帰属します。</p>" +
         "<p>成績は各ページに記載した出典をもとに手作業でまとめています。最新・正確な数字は" +
         ext("https://www.mlb.com/player/antonio-senzatela-622608", "MLB.com の選手ページ") + "でご確認ください。</p>" +
+        '<p class="disclaimer">' + DISCLAIMER + "</p>" +
       "</div>";
 
-    var main = document.querySelector("main");
-    document.body.insertBefore(notice, main);
-    document.body.insertBefore(header, notice);
+    document.body.insertBefore(header, document.querySelector("main"));
     document.body.appendChild(footer);
   }
 
@@ -94,14 +85,25 @@
       '<div class="en">' + esc(p.nameEn) + "</div>" +
       "<p>" + esc(p.team) + "／" + esc(p.position) + "</p>";
 
+    var ph = p.photo;
+    var photo = ph ?
+      '<figure class="profile-photo">' +
+        '<img src="' + esc(ph.src) + '" alt="' + esc(ph.alt) + '" width="320" height="400" loading="lazy" decoding="async">' +
+        "<figcaption>" + esc(ph.caption) +
+          '<span class="credit">Photo: ' + ext(ph.sourceUrl, ph.author) + " / " + ext(ph.licenseUrl, ph.license) +
+          "（" + ext(ph.sourceUrl, "Wikimedia Commons") + "）</span>" +
+        "</figcaption></figure>"
+      : "";
+
     $("profile").innerHTML =
+      '<div class="profile-top">' + photo +
       '<dl class="profile-list">' +
         "<dt>名前</dt><dd>" + esc(p.nameJa) + "（" + esc(p.nameEn) + "）<br><span class=\"note\">" + esc(p.nameAltJa) + "</span></dd>" +
         "<dt>所属</dt><dd>" + esc(p.team) + "</dd>" +
         "<dt>ポジション</dt><dd>" + esc(p.position) + "</dd>" +
         "<dt>生年月日</dt><dd>" + esc(p.born) + "</dd>" +
         "<dt>出身</dt><dd>" + esc(p.birthplace) + "</dd>" +
-      "</dl>" +
+      "</dl></div>" +
       '<ul class="facts">' + p.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
       sourceList(p.sources);
 
@@ -199,22 +201,33 @@
   // ---------- 動画 ----------
   function renderVideos() {
     $("channels").innerHTML = (D.videoChannels || []).map(function (c) {
-      return '<div class="card"><strong>' + ext(c.url, c.name) + "</strong><p style=\"margin:4px 0 0\">" + esc(c.description) + "</p></div>";
+      var initial = '<span class="channel-initial" aria-hidden="true">' + esc(c.initial || String(c.name).charAt(0)) + "</span>";
+      var icon = c.icon
+        ? '<img class="channel-icon" src="' + esc(c.icon) + '" alt="" width="48" height="48" loading="lazy" referrerpolicy="no-referrer">'
+        : "";
+      return '<div class="card channel-card"><span class="channel-avatar">' + initial + icon + "</span>" +
+        '<div class="channel-text"><strong>' + ext(c.url, c.name) + "</strong>" +
+        '<p style="margin:4px 0 0">' + esc(c.description) + "</p></div></div>";
     }).join("");
+    // アイコンが読み込めなかったら頭文字の丸アイコンだけを残す
+    Array.prototype.forEach.call(document.querySelectorAll("#channels .channel-icon"), function (img) {
+      img.addEventListener("error", function () { img.remove(); });
+    });
 
     $("video-grid").innerHTML = (D.videos || []).map(function (v) {
       var watch = "https://www.youtube.com/watch?v=" + encodeURIComponent(v.id);
       return '<article class="video-card">' +
         '<div class="video-frame">' +
-          '<button type="button" class="video-play" data-id="' + esc(v.id) + '" data-title="' + esc(v.title) + '" aria-label="' + esc(v.title) + ' を再生">' +
-            '<span class="icon" aria-hidden="true">▶</span><span>ここで再生</span>' +
-            '<span class="hint">YouTube の埋め込みプレーヤーを読み込みます</span>' +
-          "</button></div>" +
+          '<a class="video-thumb" href="' + esc(watch) + '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(v.title) + '（YouTube で開く）">' +
+            '<img src="https://i.ytimg.com/vi/' + encodeURIComponent(v.id) + '/hqdefault.jpg" alt="" width="480" height="360" loading="lazy" decoding="async">' +
+            '<span class="icon" aria-hidden="true">▶</span>' +
+          "</a></div>" +
         '<div class="video-body">' +
           "<h3>" + esc(v.title) + "</h3>" +
           '<p class="note">チャンネル：' + (v.channel ? (v.channelUrl ? ext(v.channelUrl, v.channel) : esc(v.channel)) : "YouTube の動画ページでご確認ください") + "</p>" +
           "<p>" + esc(v.comment) + "</p>" +
           '<div class="links">' + ext(watch, "YouTube で見る ↗") +
+            '<button type="button" class="video-play" data-id="' + esc(v.id) + '" data-title="' + esc(v.title) + '">ここで再生</button>' +
             '<span class="note">' + formatDate(v.verified) + " 実在確認</span></div>" +
         "</div></article>";
     }).join("");
@@ -229,7 +242,10 @@
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
-      btn.replaceWith(iframe);
+      var frame = btn.closest(".video-card").querySelector(".video-frame");
+      frame.innerHTML = "";
+      frame.appendChild(iframe);
+      btn.remove();
     });
   }
 

@@ -15,6 +15,16 @@ window.SITE_DATA.profile = {
   position: "投手（右投げ）／2026年はリリーフ専任",
   born: "1995年1月21日",
   birthplace: "ベネズエラ・カラボボ州バレンシア",
+  // 選手写真（Wikimedia Commons の自由ライセンス画像）。クレジット表示は必須なので消さないでください。
+  photo: {
+    src: "https://upload.wikimedia.org/wikipedia/commons/6/68/Antonio_Senzatela_(47114817704)_(cropped).jpg",
+    alt: "コロラド・ロッキーズのユニフォームを着たアントニオ・センザテラ投手",
+    caption: "ロッキーズ時代（2019年ごろ）のセンザテラ投手",
+    author: "Ian D'Andrea",
+    license: "CC BY-SA 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_(47114817704)_(cropped).jpg"
+  },
   facts: [
     "2017年にコロラド・ロッキーズでメジャーデビュー。2026年途中まで、メジャーではロッキーズ一筋でした。",
     "先発だった2025年は4勝15敗と苦しんだシーズンでした。",
