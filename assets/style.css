@@ -333,8 +333,10 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   text-align: center;
   line-height: 1.6;
 }
-.team-col { background: #6b7480; color: #fff; }
-.team-mil { background: var(--navy); color: #fff; }
+/* 球団ラベルだけはチームカラー（サイト全体の配色ルールの例外） */
+.team-col { background: #33006f; color: #fff; }
+.team-mil { background: #12284b; color: #ffc52f; }
+.team-multi { background: #6b7480; color: #fff; }
 .res-w { color: var(--text); font-weight: 700; }
 .res-l { color: var(--red); font-weight: 700; }
 .badge {
