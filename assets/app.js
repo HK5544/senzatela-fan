@@ -55,17 +55,13 @@
       '<div class="wrap">' +
         '<h1 class="site-title">' +
           '<a class="brand" href="index.html" aria-label="センザテラ極東応援団（非公式ファンサイト）トップページへ">' +
-            // オリジナルのエンブレム（赤い円＋ゴールドの細いリング＋背番号風の「AS」）
-            '<svg class="brand-emblem" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
-              '<circle cx="32" cy="32" r="31" fill="#bf0d3e"/>' +
-              '<circle cx="32" cy="32" r="27.5" fill="none" stroke="#ffc52f" stroke-width="1.6"/>' +
-              '<text x="32" y="43.5" text-anchor="middle" fill="#fff" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
-                'font-weight="700" font-size="31" letter-spacing="-.5">AS</text>' +
+            // オリジナルのエンブレム（ゴールドの横長バッジに濃紺の「SENZA」）
+            '<svg class="brand-emblem" viewBox="0 0 96 40" aria-hidden="true" focusable="false">' +
+              '<rect x="0.5" y="0.5" width="95" height="39" rx="7" fill="#ffc52f" stroke="rgba(255,255,255,.55)" stroke-width="1"/>' +
+              '<text x="48" y="30" text-anchor="middle" fill="#041e42" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
+                'font-weight="700" font-size="26" textLength="74" lengthAdjust="spacingAndGlyphs">SENZA</text>' +
             "</svg>" +
-            '<span class="brand-text">' +
-              '<span class="brand-en">SENZATELA</span>' +
-              '<span class="brand-ja">極東応援団<span class="brand-star" aria-hidden="true">★</span></span>' +
-            "</span>" +
+            '<span class="brand-name">センザテラ極東応援団</span>' +
             '<span class="brand-tag">UNOFFICIAL FAN SITE / JAPAN</span>' +
           "</a></h1>" +
         '<nav aria-label="メインメニュー"><ul class="nav">' +
