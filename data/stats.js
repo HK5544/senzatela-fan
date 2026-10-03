@@ -15,7 +15,7 @@ window.SITE_DATA.profile = {
   position: "投手（右投げ）／2026年はリリーフ専任",
   born: "1995年1月21日",
   birthplace: "ベネズエラ・カラボボ州バレンシア",
-  // 選手写真（Wikimedia Commons の自由ライセンス画像）。クレジット表示は必須なので消さないでください。
+  // トップのヒーローの選手写真（Wikimedia Commons の自由ライセンス画像）。クレジット表示は必須なので消さないでください。
   photo: {
     src: "https://upload.wikimedia.org/wikipedia/commons/6/68/Antonio_Senzatela_(47114817704)_(cropped).jpg",
     alt: "コロラド・ロッキーズのユニフォームを着たアントニオ・センザテラ投手",
@@ -24,6 +24,19 @@ window.SITE_DATA.profile = {
     license: "CC BY-SA 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_(47114817704)_(cropped).jpg"
+  },
+  // プロフィール欄の顔写真（選手名鑑風に顔の周りをトリミングして表示）。
+  // focusX / focusY は顔の位置（画像の横・縦の%）、zoom は拡大率。表示がずれたらここを調整してください。
+  headshot: {
+    src: "https://upload.wikimedia.org/wikipedia/commons/8/89/Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg",
+    alt: "アントニオ・センザテラ投手の顔写真（2017年、ロッキーズ時代）",
+    author: "Jeff Warrington",
+    license: "CC BY 2.0",
+    licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg",
+    focusX: 45,
+    focusY: 12,
+    zoom: 2
   },
   facts: [
     "2017年にコロラド・ロッキーズでメジャーデビュー。2026年途中まで、メジャーではロッキーズ一筋でした。",

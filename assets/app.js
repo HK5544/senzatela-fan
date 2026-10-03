@@ -113,14 +113,29 @@
         }).join("") + "</dl>" +
       "</div></div>";
 
+    // 選手名鑑風の顔写真：画像の上端をそろえて拡大し、顔が枠の左右中央・上から約1/4に来るようにする
+    var hs = p.headshot, headshot = "";
+    if (hs) {
+      var z = hs.zoom || 2, fx = hs.focusX == null ? 50 : hs.focusX;
+      var ox = z === 1 ? 50 : Math.max(0, Math.min(100, (50 - z * fx) / (1 - z)));
+      headshot =
+        '<figure class="headshot">' +
+          '<div class="headshot-frame"><img src="' + esc(hs.src) + '" alt="' + esc(hs.alt) + '" decoding="async" loading="lazy"' +
+            ' style="object-position:' + fx + '% 0;transform-origin:' + ox.toFixed(1) + '% 0;transform:scale(' + z + ')"></div>' +
+          '<figcaption><span class="credit">Photo: ' + ext(hs.sourceUrl, hs.author) + " / " + ext(hs.licenseUrl, hs.license) +
+            "（トリミングして使用）（" + ext(hs.sourceUrl, "Wikimedia Commons") + "）</span></figcaption>" +
+        "</figure>";
+    }
+
     $("profile").innerHTML =
+      '<div class="profile-top">' + headshot +
       '<dl class="profile-list">' +
         "<dt>名前</dt><dd>" + esc(p.nameJa) + "（" + esc(p.nameEn) + "）<br><span class=\"note\">" + esc(p.nameAltJa) + "</span></dd>" +
         "<dt>所属</dt><dd>" + esc(p.team) + "</dd>" +
         "<dt>ポジション</dt><dd>" + esc(p.position) + "</dd>" +
         "<dt>生年月日</dt><dd>" + esc(p.born) + "</dd>" +
         "<dt>出身</dt><dd>" + esc(p.birthplace) + "</dd>" +
-      "</dl>" +
+      "</dl></div>" +
       '<ul class="facts">' + p.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
       sourceList(p.sources);
 

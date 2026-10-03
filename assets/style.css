@@ -181,8 +181,6 @@ h2.section {
 .card + .card { margin-top: 12px; }
 
 /* プロフィール */
-.bio-photo figcaption { margin-top: 6px; font-size: .8rem; color: var(--muted); line-height: 1.5; }
-.bio-photo .credit { display: block; font-size: .72rem; margin-top: 2px; overflow-wrap: anywhere; }
 
 .profile-list { display: grid; grid-template-columns: max-content 1fr; gap: 0 16px; margin: 0; }
 .profile-list dt, .profile-list dd { padding: 6px 0; border-bottom: 1px solid var(--line); }
@@ -199,13 +197,41 @@ h2.section {
 .facts li + li { margin-top: 4px; }
 .facts li::marker { color: var(--red); }
 
-/* 経歴ページの写真 */
-.bio-photo { margin: 4px 0 14px; max-width: 280px; }
-@media (min-width: 561px) {
-  .bio-photo { float: right; width: 240px; margin: 4px 0 12px 22px; }
-  .tl-item { display: flow-root; }
+/* プロフィールの顔写真（選手名鑑風） */
+.profile-top { display: flex; gap: 22px; align-items: flex-start; }
+.profile-top .profile-list { flex: 1; min-width: 0; }
+.headshot { margin: 0; flex: 0 0 180px; width: 180px; }
+.headshot-frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #e9ecf0;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
 }
-.bio-photo img { display: block; width: 100%; height: auto; border-radius: 4px; background: var(--line); }
+.headshot-frame img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.headshot figcaption { margin-top: 6px; font-size: .7rem; line-height: 1.5; color: var(--muted); }
+.headshot .credit { overflow-wrap: anywhere; }
+
+/* ---------- 写真（経歴ページなど。大きさとキャプションの書式をそろえる） ---------- */
+.photo { margin: 0 0 18px; }
+.photo img { display: block; width: 100%; background: #e9ecf0; border-radius: var(--radius); }
+.photo figcaption { margin-top: 6px; font-size: .8rem; line-height: 1.55; color: var(--muted); }
+.photo .cap { display: block; color: var(--text); font-weight: 700; }
+.photo .credit { display: block; font-size: .72rem; overflow-wrap: anywhere; }
+/* 横長：本文幅いっぱい */
+.photo-wide img, .photo-land img { height: clamp(220px, 34vw, 380px); object-fit: cover; }
+.era > .photo-wide { margin-top: 4px; margin-bottom: 22px; }
+/* 選手の縦長写真：縦長のまま */
+.photo-portrait img { height: auto; aspect-ratio: auto; }
+/* 縦長＋横長を並べる */
+.photo-pair { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 16px; align-items: start; margin-bottom: 6px; }
+.photo-pair .photo-portrait img,
+.photo-pair .photo-land img { height: 420px; object-fit: cover; object-position: center top; }
 
 /* ---------- 表（スタッツ表） ---------- */
 .table-scroll {
@@ -409,7 +435,17 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 .site-footer p { margin: 0 0 8px; }
 .site-footer .disclaimer { margin: 14px 0 0; font-size: .72rem; opacity: .85; }
 
+@media (max-width: 640px) {
+  .photo-pair { grid-template-columns: 1fr; }
+  .photo-pair .photo-portrait { max-width: 340px; }
+  .photo-pair .photo-portrait img { height: auto; }
+  .photo-pair .photo-land img { height: clamp(200px, 56vw, 300px); object-position: center; }
+}
+
 @media (max-width: 560px) {
+  .profile-top { flex-direction: column; align-items: center; }
+  .profile-top .profile-list { align-self: stretch; }
+  .headshot { flex-basis: auto; width: 160px; }
   .site-header .wrap { padding-top: 8px; }
   .nav { flex-wrap: wrap; overflow: visible; }
   .nav a { padding: 8px 9px 7px; font-size: .88rem; }
@@ -418,7 +454,6 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   .profile-list { grid-template-columns: 1fr; }
   .profile-list dt { border-bottom: 0; padding-bottom: 0; }
   .card { padding: 14px 16px; }
-  .bio-photo { max-width: 240px; }
 }
 
 /* ---------- 経歴ページ ---------- */

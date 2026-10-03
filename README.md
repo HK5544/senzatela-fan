@@ -2,7 +2,8 @@
 
 ミルウォーキー・ブルワーズのアントニオ・センザテラ投手を応援する、日本語の**非公式**ファンサイトです。
 **球団・MLB・選手本人とは一切関係ありません。** MLB・球団のロゴやワードマークは使わず、デザインだけスポーツメディア風（どの端末でも白基調。ネイビーのナビバー、アクセントは赤、ゴールドは差し色、見出しは Google Fonts の Oswald）にしています。ヘッダーとフッターに「非公式ファンサイト」と明記しています。
-選手写真は Wikimedia Commons の自由ライセンス画像（Photo: Ian D'Andrea / CC BY-SA 2.0、Jeff Warrington / CC BY 2.0）で、各写真の下にクレジットを表示しています。
+写真はすべて Wikimedia Commons の自由ライセンス／パブリックドメイン画像で、各写真の下に撮影者・ライセンス・Commons へのリンクを表示しています（選手写真：Ian D'Andrea / CC BY-SA 2.0、Jeff Warrington / CC BY 2.0。経歴ページの球場・街の写真は各キャプション参照）。
+プロフィールの顔写真は `data/stats.js` の `headshot` で、顔の位置（`focusX` / `focusY`）と拡大率（`zoom`）を調整できます。
 
 公開URL（GitHub Pages）: https://senzatela-fan-jp.github.io/
 
