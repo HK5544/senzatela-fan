@@ -255,3 +255,54 @@ tbody tr.total td { font-weight: 700; background: var(--gold-soft); }
   .profile-list dd { margin-bottom: 8px; }
   .card { padding: 14px 16px; }
 }
+
+/* ---------- 経歴ページ ---------- */
+.bio .hero h2 { font-size: 1.45rem; }
+.bio-lead p { margin: 0; }
+.toc { margin-top: 12px; }
+.toc ol { margin: 6px 0 0; padding-left: 1.4em; }
+.toc li { margin: 2px 0; }
+
+.era { scroll-margin-top: 12px; }
+.era-years {
+  margin: 40px 0 -6px;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--muted);
+}
+.era h2.section { margin-top: 8px; line-height: 1.5; }
+
+.timeline {
+  position: relative;
+  margin-left: 6px;
+  padding-left: 22px;
+  border-left: 3px solid var(--line);
+}
+.tl-item { position: relative; padding-bottom: 18px; }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -31px; top: 6px;
+  width: 15px; height: 15px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid var(--navy);
+}
+.tl-item h3 { margin: 0 0 6px; font-size: 1.05rem; line-height: 1.5; }
+.tl-date {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--gold);
+  font-size: .82rem;
+  vertical-align: 2px;
+}
+.tl-item p { margin: 0 0 10px; }
+.tl-item p:last-child { margin-bottom: 0; }
+
+.table-title { font-size: 1rem; margin: 4px 0 8px; }
+.table-note { margin: 8px 0 24px; }

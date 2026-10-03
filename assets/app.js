@@ -10,6 +10,7 @@
 
   var NAV = [
     { id: "home", href: "index.html", label: "トップ" },
+    { id: "bio", href: "biography.html", label: "経歴" },
     { id: "games", href: "games.html", label: "登板記録" },
     { id: "news", href: "news.html", label: "ニュース" },
     { id: "videos", href: "videos.html", label: "おすすめ動画" }
@@ -232,7 +233,16 @@
     });
   }
 
+  // 本文中の外部リンクは新しいタブで開く
+  function externalLinksInNewTab() {
+    Array.prototype.forEach.call(document.querySelectorAll('main a[href^="http"]'), function (a) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+    });
+  }
+
   renderLayout();
+  if (page === "bio") externalLinksInNewTab();
   if (page === "home") renderHome();
   if (page === "games") renderGames();
   if (page === "news") renderNews();

@@ -10,6 +10,7 @@
 | ファイル | 内容 |
 | --- | --- |
 | `index.html` | トップ（プロフィール・今季成績） |
+| `biography.html` | 経歴（年表形式。本文は HTML に直接書いています） |
 | `games.html` | 試合ごとの登板記録 |
 | `news.html` | ニュース・記事一覧 |
 | `videos.html` | おすすめ動画（日本のYouTuberの紹介動画） |
