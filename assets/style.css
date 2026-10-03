@@ -1,5 +1,5 @@
 /*
- * スポーツメディア風のデザイン（白基調 × ネイビー、アクセントは赤、ゴールドは差し色）。
+ * スポーツメディア風のデザイン（白基調 × 濃紺、アクセントは赤。色は濃紺・赤・白・グレー系だけを使う）。
  * どの端末でも常に白基調で表示します（ダークモードには切り替えません）。
  * MLB・球団のロゴやワードマークは使いません。
  * 見出しの英数字は Oswald（Google Fonts）、日本語はOS標準の太字ゴシックで表示します。
@@ -10,8 +10,7 @@
   --navy-2: #0b2d5b;
   --navy-3: #13407e;
   --red: #bf0d3e;
-  --gold: #ffc52f;
-  --gold-soft: #fff8e1;
+  --hl: #e9edf3;          /* 合計行などのハイライト（グレー） */
   --red-soft: #fdf0f3;
   --bg: #f7f8fa;
   --surface: #ffffff;
@@ -72,7 +71,7 @@ a:hover { text-decoration-thickness: 2px; }
   transition: filter .15s ease;
 }
 .brand:hover { filter: brightness(1.15); }
-.brand:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; border-radius: 4px; }
+.brand:focus-visible { outline: 2px solid #fff; outline-offset: 4px; border-radius: 4px; }
 .brand-emblem { grid-row: 1 / 3; width: 84px; height: 35px; display: block; }
 .brand-name {
   font-family: var(--font-body);
@@ -141,7 +140,7 @@ body[data-page="home"] main.wrap { padding-top: 4px; }
   position: absolute;
   left: 0; top: 0; bottom: 0;
   width: 6px;
-  background: linear-gradient(var(--red) 0 50%, var(--gold) 50% 100%);
+  background: linear-gradient(var(--red) 0 50%, #fff 50% 100%);
 }
 .hero h2 {
   margin: 0 0 6px;
@@ -152,7 +151,7 @@ body[data-page="home"] main.wrap { padding-top: 4px; }
   letter-spacing: .01em;
 }
 .hero .en {
-  color: var(--gold);
+  color: #fff;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 1.05rem;
@@ -288,7 +287,7 @@ tbody th { font-weight: 700; background: var(--surface); }
 tbody tr:nth-child(even) td, tbody tr:nth-child(even) th { background: var(--surface-2); }
 tbody tr:hover td, tbody tr:hover th { background: #eef2f8; }
 tbody tr:last-child td, tbody tr:last-child th { border-bottom: 0; }
-tbody tr.total td, tbody tr.total th { font-weight: 700; background: var(--gold-soft); border-top: 2px solid var(--navy); }
+tbody tr.total td, tbody tr.total th { font-weight: 700; background: var(--hl); border-top: 2px solid var(--navy); }
 tbody tr.subtotal td, tbody tr.subtotal th { font-weight: 700; }
 tbody tr.split th { font-weight: 400; color: var(--muted); }
 .col2-left td:nth-child(2), .col2-left th:nth-child(2) { text-align: left; }
@@ -315,7 +314,7 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 .sticky2 tbody tr:hover > :first-child,
 .sticky2 tbody tr:hover > :nth-child(2) { background: #eef2f8; }
 .sticky2 tbody tr.total > :first-child,
-.sticky2 tbody tr.total > :nth-child(2) { background: var(--gold-soft); }
+.sticky2 tbody tr.total > :nth-child(2) { background: var(--hl); }
 .sticky1 thead tr > :first-child,
 .sticky2 thead tr > :first-child,
 .sticky2 thead tr > :nth-child(2) { background: var(--navy); }
@@ -334,8 +333,8 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   text-align: center;
   line-height: 1.6;
 }
-.team-col { background: #33006f; color: #fff; }
-.team-mil { background: var(--navy); color: var(--gold); }
+.team-col { background: #6b7480; color: #fff; }
+.team-mil { background: var(--navy); color: #fff; }
 .res-w { color: var(--text); font-weight: 700; }
 .res-l { color: var(--red); font-weight: 700; }
 .badge {
@@ -345,13 +344,15 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   font-size: .75rem;
   font-weight: 700;
   line-height: 1.7;
-  background: var(--line);
-  color: var(--text);
+  background: #fff;
+  color: var(--muted);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
 }
-.badge.w { background: var(--gold); color: var(--navy); }
-.badge.l { background: var(--red); color: #fff; }
-.badge.sv { background: var(--navy); color: #fff; }
-.badge.hld { background: var(--navy-3); color: #fff; }
+/* 勝＝濃紺、敗＝赤、セーブ＝赤枠、ホールド＝グレー、その他（セーブ失敗など）＝グレー枠 */
+.badge.w { background: var(--navy); color: #fff; box-shadow: none; }
+.badge.l { background: var(--red); color: #fff; box-shadow: none; }
+.badge.sv { background: #fff; color: var(--red); box-shadow: inset 0 0 0 1.5px var(--red); }
+.badge.hld { background: #6b7480; color: #fff; box-shadow: none; }
 .note, .source { font-size: .85rem; color: var(--muted); }
 .source ul { margin: 4px 0 0; padding-left: 1.2em; }
 
@@ -439,9 +440,9 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 }
 .channel-initial {
   display: flex; align-items: center; justify-content: center;
-  background: var(--navy); color: var(--gold);
+  background: var(--navy); color: #fff;
   font-family: var(--font-head);
-  font-weight: 700; font-size: 1.3rem; border: 2px solid var(--gold);
+  font-weight: 700; font-size: 1.3rem; border: 2px solid var(--red);
 }
 .channel-icon { object-fit: cover; background: var(--surface); }
 
@@ -454,7 +455,7 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
   margin-top: 8px;
 }
 .site-footer .wrap { padding-top: 22px; padding-bottom: 30px; }
-.site-footer a { color: var(--gold); }
+.site-footer a { color: #fff; }
 .site-footer p { margin: 0 0 8px; }
 .site-footer .disclaimer { margin: 14px 0 0; font-size: .72rem; opacity: .85; }
 
@@ -604,7 +605,7 @@ sup.ref a:hover { color: var(--link); text-decoration: underline; }
   display: inline-block;
   width: 10px; height: 10px;
   margin-right: 8px;
-  background: var(--gold);
+  background: var(--red);
   vertical-align: 0;
 }
 .player-name { margin: 0; line-height: 1; }

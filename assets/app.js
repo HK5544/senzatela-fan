@@ -55,10 +55,10 @@
       '<div class="wrap">' +
         '<h1 class="site-title">' +
           '<a class="brand" href="index.html" aria-label="センザテラ極東応援団（非公式ファンサイト）トップページへ">' +
-            // オリジナルのエンブレム（ゴールドの横長バッジに濃紺の「SENZA」）
+            // オリジナルのエンブレム（白の横長バッジに赤の「SENZA」）
             '<svg class="brand-emblem" viewBox="0 0 96 40" aria-hidden="true" focusable="false">' +
-              '<rect x="0.5" y="0.5" width="95" height="39" rx="7" fill="#ffc52f" stroke="rgba(255,255,255,.55)" stroke-width="1"/>' +
-              '<text x="48" y="30" text-anchor="middle" fill="#041e42" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
+              '<rect x="0.5" y="0.5" width="95" height="39" rx="7" fill="#fff"/>' +
+              '<text x="48" y="30" text-anchor="middle" fill="#bf0d3e" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
                 'font-weight="700" font-size="26" textLength="74" lengthAdjust="spacingAndGlyphs">SENZA</text>' +
             "</svg>" +
             '<span class="brand-name">センザテラ極東応援団</span>' +
