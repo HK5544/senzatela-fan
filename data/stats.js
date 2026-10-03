@@ -26,18 +26,14 @@ window.SITE_DATA.profile = {
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_(47114817704)_(cropped).jpg"
   },
   // プロフィール欄の顔写真（選手名鑑風に顔の周りをトリミングして表示）。
-  // focusX / focusY は元画像での顔の中心の位置（横・縦の%）。
-  // zoom は「枠の高さの何倍に画像を拡大するか」（大きいほど顔のアップ。2.2 で帽子から胸元くらい）。
+  // トリミングの位置・拡大率は assets/style.css の「.headshot-frame img」で調整します。
   headshot: {
     src: "https://upload.wikimedia.org/wikipedia/commons/8/89/Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg",
     alt: "アントニオ・センザテラ投手の顔写真（2017年、ロッキーズ時代）",
     author: "Jeff Warrington",
     license: "CC BY 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by/2.0/",
-    sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg",
-    focusX: 47.5,
-    focusY: 10,
-    zoom: 2.2
+    sourceUrl: "https://commons.wikimedia.org/wiki/File:Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg"
   },
   facts: [
     "2017年にコロラド・ロッキーズでメジャーデビュー。2026年途中まで、メジャーではロッキーズ一筋でした。",

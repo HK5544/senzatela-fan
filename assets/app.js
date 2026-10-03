@@ -78,24 +78,6 @@
     document.body.appendChild(footer);
   }
 
-  // 顔写真のトリミング（枠は縦3:4。単位はすべて枠に対する%）
-  function fitHeadshot(img, hs) {
-    function place() {
-      var r = img.naturalWidth / img.naturalHeight;
-      if (!r) return;
-      var frameAspect = 3 / 4;
-      var h = Math.max(hs.zoom || 2.2, frameAspect / r);   // 画像の高さ（枠の高さ＝1）。枠を必ず覆う
-      var w = h * r / frameAspect;                          // 画像の幅（枠の幅＝1）
-      var fx = (hs.focusX == null ? 50 : hs.focusX) / 100, fy = (hs.focusY == null ? 12 : hs.focusY) / 100;
-      var left = 0.5 - fx * w, top = 0.3 - fy * h;
-      left = Math.min(0, Math.max(1 - w, left));
-      top = Math.min(0, Math.max(1 - h, top));
-      img.style.cssText = "object-fit:fill;inset:auto;width:" + (w * 100).toFixed(2) + "%;height:" + (h * 100).toFixed(2) +
-        "%;left:" + (left * 100).toFixed(2) + "%;top:" + (top * 100).toFixed(2) + "%";
-    }
-    if (img.complete && img.naturalWidth) place(); else img.addEventListener("load", place);
-  }
-
   // ---------- トップ ----------
   function renderHome() {
     var p = D.profile, s = D.season;
@@ -131,12 +113,12 @@
         }).join("") + "</dl>" +
       "</div></div>";
 
-    // 選手名鑑風の顔写真：画像の実寸を読み込んでから、顔が枠の左右中央・上から約3割に来るように配置する
+    // 選手名鑑風の顔写真（トリミングの位置・拡大率は style.css の .headshot-frame img で調整）
     var hs = p.headshot, headshot = "";
     if (hs) {
       headshot =
         '<figure class="headshot">' +
-          '<div class="headshot-frame"><img id="headshot-img" src="' + esc(hs.src) + '" alt="' + esc(hs.alt) + '" decoding="async"></div>' +
+          '<div class="headshot-frame"><img src="' + esc(hs.src) + '" alt="' + esc(hs.alt) + '" decoding="async"></div>' +
           '<figcaption><span class="credit">Photo: ' + ext(hs.sourceUrl, hs.author) + " / " + ext(hs.licenseUrl, hs.license) +
             "（トリミングして使用）（" + ext(hs.sourceUrl, "Wikimedia Commons") + "）</span></figcaption>" +
         "</figure>";
@@ -153,8 +135,6 @@
       "</dl></div>" +
       '<ul class="facts">' + p.facts.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ul>" +
       sourceList(p.sources);
-
-    if (hs) fitHeadshot($("headshot-img"), hs);
 
     $("season-title").textContent = s.year + "年シーズン成績";
 

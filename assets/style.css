@@ -200,21 +200,26 @@ h2.section {
 /* プロフィールの顔写真（選手名鑑風） */
 .profile-top { display: flex; gap: 22px; align-items: flex-start; }
 .profile-top .profile-list { flex: 1; min-width: 0; }
-.headshot { margin: 0; flex: 0 0 180px; width: 180px; }
+.headshot { margin: 0; flex: 0 0 220px; width: 220px; }
 .headshot-frame {
   position: relative;
-  aspect-ratio: 3 / 4;
+  width: 100%;
+  aspect-ratio: 3 / 4;          /* 幅220px・高さ約293px */
   overflow: hidden;
   background: #e9ecf0;
   border: 1px solid var(--line-strong);
   border-radius: 2px;
 }
+/* 元画像（960×1822の縦長）の上端に合わせ、顔（横47%・縦8〜12%）のまわりを拡大。
+   拡大の基準点を上端（0%）にしているので、帽子のてっぺんは切れない */
 .headshot-frame img {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: 47% 0;
-  max-width: none;
+  object-position: 50% 0%;
+  transform: scale(1.7);
+  transform-origin: 43% 0%;   /* 横47%の顔が拡大後に枠の左右中央（50%）へ来る位置 */
 }
 .headshot figcaption { margin-top: 6px; font-size: .7rem; line-height: 1.5; color: var(--muted); }
 .headshot .credit { overflow-wrap: anywhere; }
@@ -447,7 +452,7 @@ tbody tr.split th { font-weight: 400; color: var(--muted); }
 @media (max-width: 560px) {
   .profile-top { flex-direction: column; align-items: center; }
   .profile-top .profile-list { align-self: stretch; }
-  .headshot { flex-basis: auto; width: 160px; }
+  .headshot { flex-basis: auto; width: 200px; }
   .site-header .wrap { padding-top: 8px; }
   .nav { flex-wrap: wrap; overflow: visible; }
   .nav a { padding: 8px 9px 7px; font-size: .88rem; }
