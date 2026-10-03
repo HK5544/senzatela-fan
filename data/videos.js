@@ -120,21 +120,5 @@ window.SITE_DATA.videos = [
     channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
     comment: "センザテラ投手の替え歌。",
     verified: "2026-10-03"
-  },
-  {
-    id: "7RpMlnNzsfw",
-    title: "【2026.03.13】99mphセンザ キレキレE-Rod最高！",
-    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
-    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
-    comment: "WBC期間中（2026年3月13日）の回。",
-    verified: "2026-10-03"
-  },
-  {
-    id: "LUkZXBK7d6M",
-    title: "【2026.08.17】また千賀テーラ締め！ゴーストフォーク！/カッター使いが好きなブルワーズ！だからセンザ！",
-    channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
-    channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
-    comment: "ブルワーズ移籍直後（2026年8月17日）の回。",
-    verified: "2026-10-03"
   }
 ];
