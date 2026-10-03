@@ -8,14 +8,14 @@
 window.SITE_DATA = window.SITE_DATA || {};
 
 window.SITE_DATA.profile = {
-  nameJa: "アントニオ・センザテラ",
+  nameJa: "アントニオ・センザテーラ",
   nameEn: "Antonio Senzatela",
   team: "ミルウォーキー・ブルワーズ",
   position: "投手（リリーフ）",
   // プロフィール表（[項目, 内容, 小さく添える注記] の順。注記がなければ省略）
   // 事実の出典は経歴ページ（biography.html）の「出典」にまとめています。
   details: [
-    ["名前", "アントニオ・センザテラ（Antonio Senzatela）", "センザテーラ／センサテーラと表記されることも"],
+    ["名前", "アントニオ・センザテーラ（Antonio Senzatela）", "センザテラ／センサテーラと表記されることも"],
     ["本名", "Antonio Senzatela Rondón"],
     ["所属", "ミルウォーキー・ブルワーズ（2026年8月〜）"],
     ["ポジション", "投手（リリーフ）"],
@@ -39,8 +39,8 @@ window.SITE_DATA.profile = {
   // トップのヒーローの選手写真（Wikimedia Commons の自由ライセンス画像）。クレジット表示は必須なので消さないでください。
   photo: {
     src: "https://upload.wikimedia.org/wikipedia/commons/6/68/Antonio_Senzatela_(47114817704)_(cropped).jpg",
-    alt: "コロラド・ロッキーズのユニフォームを着たアントニオ・センザテラ投手",
-    caption: "ロッキーズ時代（2019年ごろ）のセンザテラ投手",
+    alt: "コロラド・ロッキーズのユニフォームを着たアントニオ・センザテーラ投手",
+    caption: "ロッキーズ時代（2019年ごろ）のセンザテーラ投手",
     author: "Ian D'Andrea",
     license: "CC BY-SA 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by-sa/2.0/",
@@ -50,7 +50,7 @@ window.SITE_DATA.profile = {
   // トリミングの位置・拡大率は assets/style.css の「.headshot-frame img」で調整します。
   headshot: {
     src: "https://upload.wikimedia.org/wikipedia/commons/8/89/Antonio_Senzatela_Colorado_Rockies_(33945081480)_(cropped).jpg",
-    alt: "アントニオ・センザテラ投手の顔写真（2017年、ロッキーズ時代）",
+    alt: "アントニオ・センザテーラ投手の顔写真（2017年、ロッキーズ時代）",
     author: "Jeff Warrington",
     license: "CC BY 2.0",
     licenseUrl: "https://creativecommons.org/licenses/by/2.0/",

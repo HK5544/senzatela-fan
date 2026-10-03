@@ -54,14 +54,14 @@
     header.innerHTML =
       '<div class="wrap">' +
         '<h1 class="site-title">' +
-          '<a class="brand" href="index.html" aria-label="センザテラ極東応援団（非公式ファンサイト）トップページへ">' +
+          '<a class="brand" href="index.html" aria-label="センザテーラ極東応援団（非公式ファンサイト）トップページへ">' +
             // オリジナルのエンブレム（白の横長バッジに赤の「SENZA」）
             '<svg class="brand-emblem" viewBox="0 0 96 40" aria-hidden="true" focusable="false">' +
               '<rect x="0.5" y="0.5" width="95" height="39" rx="7" fill="#fff"/>' +
               '<text x="48" y="30" text-anchor="middle" fill="#bf0d3e" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
                 'font-weight="700" font-size="26" textLength="74" lengthAdjust="spacingAndGlyphs">SENZA</text>' +
             "</svg>" +
-            '<span class="brand-name">センザテラ極東応援団</span>' +
+            '<span class="brand-name">センザテーラ極東応援団</span>' +
             '<span class="brand-tag">UNOFFICIAL FAN SITE / JAPAN</span>' +
           "</a></h1>" +
         '<nav aria-label="メインメニュー"><ul class="nav">' +

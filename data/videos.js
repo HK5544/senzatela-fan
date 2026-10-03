@@ -36,7 +36,7 @@ window.SITE_DATA.videoChannels = [
     url: "https://www.youtube.com/@MLB_Park_Japan",
     icon: "https://yt3.googleusercontent.com/ayWfbNize4ZII0MMQcJmzlZiiTIGp1zA97J068POcNggij4oYHoV8Pko5y8_zcwc_et9Q08DRtk=s176-c-k-c0x00ffffff-no-rj",
     initial: "M",
-    description: "サカイさんがMLBの話題を日本語で発信するチャンネル。センザテラ投手を愛あるネタで盛り上げる動画も多数。"
+    description: "サカイさんがMLBの話題を日本語で発信するチャンネル。センザテーラ投手を愛あるネタで盛り上げる動画も多数。"
   }
 ];
 
@@ -78,7 +78,7 @@ window.SITE_DATA.videos = [
     title: "センザテーラ『許した走者はわずか7人！5回1失点0奪三振の圧巻の投球でチームトップタイとなる今季2勝目！』《THE FEATURE PLAYER》",
     channel: "センザテーラ（@A.Senzatela）",
     channelUrl: "https://www.youtube.com/@A.Senzatela",
-    comment: "打たせて取る、センザテラらしい先発登板。",
+    comment: "打たせて取る、センザテーラらしい先発登板。",
     verified: "2026-10-03"
   },
   {
@@ -118,7 +118,7 @@ window.SITE_DATA.videos = [
     title: "【MLB替え歌】センザテラ",
     channel: "MLB Park Japan / サカイ（@MLB_Park_Japan）",
     channelUrl: "https://www.youtube.com/@MLB_Park_Japan",
-    comment: "センザテラ投手の替え歌。",
+    comment: "センザテーラ投手の替え歌。",
     verified: "2026-10-03"
   }
 ];

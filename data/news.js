@@ -41,7 +41,7 @@ window.SITE_DATA.news = [
     lang: "en",
     source: "MLB.com",
     title: "May arrives, Senzatela debuts as Brewers are first to 70 wins",
-    summary: "同時に加入したダスティン・メイの先発と、センザテラのデビュー登板を伝える試合記事。",
+    summary: "同時に加入したダスティン・メイの先発と、センザテーラのデビュー登板を伝える試合記事。",
     url: "https://www.mlb.com/news/dustin-may-joins-brewers-rotation-after-trade-deadline-move"
   },
   {
