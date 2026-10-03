@@ -53,9 +53,21 @@
     header.className = "site-header";
     header.innerHTML =
       '<div class="wrap">' +
-        '<h1 class="site-title"><a href="index.html">センザテラ極東応援団<span class="num"> ★</span>' +
-        "<small>アントニオ・センザテラ投手 非公式ファンサイト</small></a>" +
-        '<span class="site-badge">非公式ファンサイト</span></h1>' +
+        '<h1 class="site-title">' +
+          '<a class="brand" href="index.html" aria-label="センザテラ極東応援団（非公式ファンサイト）トップページへ">' +
+            // オリジナルのエンブレム（赤い円＋ゴールドの細いリング＋背番号風の「AS」）
+            '<svg class="brand-emblem" viewBox="0 0 64 64" aria-hidden="true" focusable="false">' +
+              '<circle cx="32" cy="32" r="31" fill="#bf0d3e"/>' +
+              '<circle cx="32" cy="32" r="27.5" fill="none" stroke="#ffc52f" stroke-width="1.6"/>' +
+              '<text x="32" y="43.5" text-anchor="middle" fill="#fff" font-family="Oswald, \'Barlow Condensed\', \'Arial Narrow\', sans-serif" ' +
+                'font-weight="700" font-size="31" letter-spacing="-.5">AS</text>' +
+            "</svg>" +
+            '<span class="brand-text">' +
+              '<span class="brand-en">SENZATELA</span>' +
+              '<span class="brand-ja">極東応援団<span class="brand-star" aria-hidden="true">★</span></span>' +
+            "</span>" +
+            '<span class="brand-tag">UNOFFICIAL FAN SITE / JAPAN</span>' +
+          "</a></h1>" +
         '<nav aria-label="メインメニュー"><ul class="nav">' +
           NAV.map(function (n) {
             return '<li><a href="' + n.href + '"' + (n.id === page ? ' aria-current="page"' : "") + ">" + n.label + "</a></li>";
