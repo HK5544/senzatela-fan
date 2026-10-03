@@ -11,6 +11,8 @@
   var NAV = [
     { id: "home", href: "index.html", label: "トップ" },
     { id: "bio", href: "biography.html", label: "経歴" },
+    { id: "pitching", href: "pitching.html", label: "投球スタイル" },
+    { id: "stats", href: "stats.html", label: "年度別成績" },
     { id: "games", href: "games.html", label: "登板記録" },
     { id: "news", href: "news.html", label: "ニュース" },
     { id: "videos", href: "videos.html", label: "おすすめ動画" }
@@ -51,7 +53,7 @@
     header.className = "site-header";
     header.innerHTML =
       '<div class="wrap">' +
-        '<h1 class="site-title"><a href="index.html">センザテラ応援団<span class="num"> ★</span>' +
+        '<h1 class="site-title"><a href="index.html">センザテラ極東応援団<span class="num"> ★</span>' +
         "<small>アントニオ・センザテラ投手 非公式ファンサイト</small></a></h1>" +
         '<nav aria-label="メインメニュー"><ul class="nav">' +
           NAV.map(function (n) {
@@ -258,7 +260,7 @@
   }
 
   renderLayout();
-  if (page === "bio") externalLinksInNewTab();
+  if (page === "bio" || page === "pitching" || page === "stats") externalLinksInNewTab();
   if (page === "home") renderHome();
   if (page === "games") renderGames();
   if (page === "news") renderNews();

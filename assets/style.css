@@ -327,3 +327,18 @@ tbody tr.total td { font-weight: 700; background: var(--gold-soft); }
 
 .table-title { font-size: 1rem; margin: 4px 0 8px; }
 .table-note { margin: 8px 0 24px; }
+
+/* ---------- 投球スタイル：横棒グラフ ---------- */
+.chart-title { margin: 0 0 10px; font-weight: 700; font-size: .95rem; }
+.hbar { display: grid; gap: 8px; }
+.hbar-row { display: grid; grid-template-columns: 3.2em 1fr 3.8em; align-items: center; gap: 10px; font-variant-numeric: tabular-nums; }
+.hbar-label { font-size: .85rem; color: var(--muted); }
+.hbar-track { height: 18px; background: var(--bg); border-radius: 4px; overflow: hidden; }
+.hbar-fill { display: block; height: 100%; background: var(--navy); border-radius: 0 4px 4px 0; }
+.hbar-row:hover .hbar-fill { background: var(--navy-2); }
+.hbar-value { font-size: .88rem; font-weight: 700; text-align: right; }
+@media (prefers-color-scheme: dark) {
+  .hbar-fill { background: var(--gold); }
+  .hbar-row:hover .hbar-fill { background: #ffd666; }
+}
+.col2-left td:nth-child(2), .col2-left th:nth-child(2) { text-align: left; }
